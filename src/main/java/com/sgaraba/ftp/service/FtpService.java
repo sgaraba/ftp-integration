@@ -36,12 +36,10 @@ import java.util.concurrent.TimeUnit;
 public class FtpService {
     public final File baseFolder = new File("target" + File.separator + "toSend");
     private final IntegrationFlowContext flowContext;
-    private final TaskExecutor taskExecutor;
     private final Map<String, IntegrationFlowContext.IntegrationFlowRegistration> flows = new HashMap<>();
 
-    public FtpService(IntegrationFlowContext flowContext, TaskExecutor taskExecutor) {
+    public FtpService(IntegrationFlowContext flowContext) {
         this.flowContext = flowContext;
-        this.taskExecutor = taskExecutor;
     }
 
     public CachingSessionFactory<FTPFile> createFTPSessionFactory(FtpConnection conection) {
