@@ -16,14 +16,14 @@ public class FtpController {
         this.ftpService = ftpService;
     }
 
-    @GetMapping("/{host}")
-    String start(@PathVariable String host) throws IOException {
+    @GetMapping("/{host}/{port}")
+    String start(@PathVariable String host, @PathVariable Integer port) throws IOException {
         ftpService.copyToFtp(
                 FtpConnection.builder()
                         .host(host)
                         .password("password")
                         .username("testuser")
-                        .port(21)
+                        .port(port)
                         .build()
         );
         return String.format("Start copy to ftp host %s", host);
